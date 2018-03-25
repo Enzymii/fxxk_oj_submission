@@ -153,8 +153,10 @@ class fxxk_spoj_:
 						continue
 					if tr.find_all('td')[4].strong!=None:
 						stat=sub_empty_char(tr.find_all('td')[4].strong.contents[0])
-					else:
-						stat=sub_empty_char(tr.find_all('td')[4].contents[0])
+					elif tr.find_all('td')[4].a!=None:
+						stat=sub_empty_char(tr.find_all('td')[4].contents[0]+tr.find_all('td')[4].a.contents[0])
+					if stat.find('(')!=-1:
+						stat=stat+')'
 					if re.search(matchre,stat)!=None:
 						found=True
 						result['ID']=sub_empty_char(tr.find_all('td')[0].a.contents[0])
