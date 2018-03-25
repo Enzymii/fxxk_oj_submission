@@ -25,7 +25,7 @@ class fxxk_spoj_:
 			print 'Login Failed!'
 		return flag
 
-	def submit_spoj(self,code,lang,prob_id):
+	def submit_spoj(self,code,prob_id,lang):
 		'''
 		language={
 			Ada95 (gnat 6.3):7
@@ -168,7 +168,7 @@ class fxxk_spoj_:
 	def submit_from_file(self,filename,prob_id,lang):
 		fcode=open(filename)
 		code=fcode.read()
-		return self.submit_poj(code,prob_id,lang)
+		return self.submit_spoj(code,prob_id,lang)
 
 def sub_empty_char(src):
 	return re.sub('\s|\t|\n','',src)
