@@ -37,6 +37,7 @@ There are several ways:
 - [poj](http://poj.org/)
 - [hdu](http://acm.hdu.edu.cn/)
 - [spoj](http://www.spoj.com/)
+- [bzoj](https://www.lydsy.com)
 
 ## Language ID for each OJ
 
@@ -155,8 +156,21 @@ Unlambda (unlambda 0.1.4.2):115
 VB.net (mono 4.6.2):50
 Whitespace (wspace 0.3):6
 
+## bzoj
 
-## Others
+**To submit on bzoj, an http header is needed, or you'll get a 404.**
+
+The easiest way is to copy it from your browser and make it as a dict in python.
+
+C:0
+C++:1 (default)
+Pascal:2
+Java:3
+Ruby:4
+Bash:5
+Python:6
+
+##Others
 
 If you have any problem or advice, write an issue.
 
