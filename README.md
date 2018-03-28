@@ -156,8 +156,7 @@ VB.net (mono 4.6.2):50
 Whitespace (wspace 0.3):6
 
 
-
-##Others
+## Others
 
 If you have any problem or advice, write an issue.
 
