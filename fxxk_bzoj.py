@@ -109,9 +109,9 @@ class fxxk_bzoj_():
 		print 'Code_Length: ',ret['Code_Length']
 
 
-def o_fxxk_bzoj(user_id,password,isfile,code,prob_id,lang=1):
+def o_fxxk_bzoj(user_id,headers,password,isfile,code,prob_id,lang=1):
 
-	fxxk=fxxk_bzoj_(user_id)
+	fxxk=fxxk_bzoj_(user_id,headers)
 
 	flag=fxxk.login_bzoj(password)
 	if flag:
