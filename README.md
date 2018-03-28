@@ -17,6 +17,7 @@ There are several ways:
 1. The easiest way is to use the function `o_fxxk_xxxx`
    You just need to give the following parameters and waiting for result.
    - user_id
+   - headers (for bzoj only)
    - password
    - True/False (Will you submit code from a local file)
    - filepath (if last parameter is "True")/ code (Otherwise)
@@ -25,6 +26,7 @@ There are several ways:
 2. If you want to use it more freely, you can use the class `fxxk_xxxx_`
    following functions are offerered:
    - `__init__(self,user_id)`: here is the initalization, remember to fill in your user_id~
+   - btw, bzoj needs a third parameter, which is the *headers*.
    - `login_xxxx(self,password)`: login with the password and the user_id given in last step.
      this function returns a bool, True for Login OK and of course, False for login Failed (The most probable reason is incorrect user_id or password, check them carefully!)
    - `submit_xxxx(self,code,prob_id,language)`: submit your code to the problem with certain language. False is the only return value, which will occur when fail to submit.
@@ -156,6 +158,7 @@ Unlambda (unlambda 0.1.4.2):115
 VB.net (mono 4.6.2):50
 Whitespace (wspace 0.3):6
 
+***
 ## bzoj
 
 **To submit on bzoj, an http header is needed, or you'll get a 404.**
@@ -170,7 +173,8 @@ Ruby:4
 Bash:5
 Python:6
 
-##Others
+***
+## Others
 
 If you have any problem or advice, write an issue.
 
