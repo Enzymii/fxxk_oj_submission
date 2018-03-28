@@ -112,7 +112,7 @@ class fxxk_spoj_():
 	def print_result(self,ret):
 		rett=ret['RESULT']
 
-		rett=re.sub('accepted.*','wrong answer',rett)
+		rett=re.sub('accepted.*','accepted',rett)
 		rett=re.sub('wronganswer.*','wrong answer',rett)
 		rett=re.sub('compilationerror.*','compilation error',rett)
 		rett=re.sub('timelimitexceeded.*','time limit exceeded',rett)
