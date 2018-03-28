@@ -36,20 +36,13 @@ class fxxk_hdu_():
 		return self.login
 
 	def submit_hdu(self,code,prob_id,lang=0):
-		'''
-		language={
-			'g++':0, (default)
-			'gcc':1,
-			'c++':2,
-			'c':3,
-			'pascal':4,
-			'java':5,
-			'c#':6
-		}
-		'''
+		
 		if not self.login:
 			print 'Please login first!'
 			return False
+
+		self.prob_id=prob_id
+		self.lang=lang
 
 		submitdata={
 			'check':0,
@@ -64,8 +57,10 @@ class fxxk_hdu_():
 			return False
 		else:
 			print "Submitted!"
+
+	def get_status(self):
 		status=fxxk_hdu_.mainurl+'/status.php?first=&pid=%d&user_id=%s&lang=%d&status=0'\
-		%(prob_id,self.user_id,lang)
+		%(self.prob_id,self.user_id,self.lang)
 
 		statusid='0'
 
@@ -90,7 +85,7 @@ class fxxk_hdu_():
 			print 'Waiting for status...'
 			soup=BeautifulSoup(r.text,"lxml")
 			# print soup.prettify()
-			tbs=soup.find_all(stat_tab)[0]
+			tbs=soup.find_all(self.__stat_tab)[0]
 			for i,tr in enumerate(tbs.find_all('tr')):
 				if i==0:
 					continue
@@ -123,15 +118,30 @@ class fxxk_hdu_():
 		code=fcode.read()
 		return self.submit_hdu(code,prob_id,lang)
 
-def __result_print_hdu(ret):
+	def __stat_tab(self,tag):
+		'''
+		ignore tables which is no the submission table
+		'''
+		return tag.has_attr('class') and tag['class']==['table_text']
+
+	def print_result(self,ret):
 		print 'Run ID: ',ret['Run ID']
 		print 'Result: ',ret['Result']		
 		print 'Time: ',ret['Exe.Time']
 		print 'Memory: ',ret['Exe.Memory']
 		print 'Code Length: ',ret['Code Len.']
 
-def stat_tab(tag):
-	'''
-	ignore tables which is no the submission table
-	'''
-	return tag.has_attr('class') and tag['class']==['table_text']
+def o_fxxk_hdu(user_id,password,isfile,code,prob_id,lang=0):
+
+	fxxk=fxxk_hdu_(user_id)
+
+	flag=fxxk.login_hdu(password)
+	if flag:
+		if isfile:
+			flag=fxxk.submit_from_file(code,prob_id,lang)
+		else:
+			fxxk.submit_hdu(code,prob_id,lang)
+		ret=fxxk.get_status()
+		fxxk.print_result(ret)			
+	else:
+		print '=Something Wrong. Program End.='

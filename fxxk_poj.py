@@ -36,20 +36,13 @@ class fxxk_poj_():
 		return s==None
 
 	def submit_poj(self,code,prob_id,lang=4):
-		'''
-		language={
-			'g++':0,
-			'gcc':1,
-			'java':2,
-			'pascal':3,
-			'c++':4, (default)
-			'c':5,
-			'fortran':6
-		}
-		'''
+		
 		if not self.login:
 			print 'Please Login First!'
 			return False
+
+		self.prob_id=prob_id
+		self.lang=lang
 
 		submitdata={
 			'problem_id':prob_id,
@@ -64,8 +57,11 @@ class fxxk_poj_():
 			return False
 		else:
 			print "Submitted!"
+
+	def get_status(self):
+
 		status=fxxk_poj_.mainurl+'/status?problem_id=%d&user_id=%s&result=&language=%d'\
-		%(prob_id,self.user_id,lang)
+		%(self.prob_id,self.user_id,self.lang)
 
 		statusid='0'
 
@@ -87,8 +83,9 @@ class fxxk_poj_():
 			found=False
 			res=''
 			r=self.session.get(status)
+			print 'Waiting for status...'
 			soup=BeautifulSoup(r.text,"lxml")
-			tbs=soup.find_all(stat_tab)[0]
+			tbs=soup.find_all(self.__stat_tab)[0]
 			for i,tr in enumerate(tbs.find_all('tr')):
 				if statusid=='0' and i==1:
 					statusid=tr.td.contents[0]
@@ -120,15 +117,30 @@ class fxxk_poj_():
 		code=fcode.read()
 		return self.submit_poj(code,prob_id,lang)
 
-def stat_tab(tag):
-	'''
-	ignore tables which is no the submission table
-	'''
-	return tag.has_attr('class') and tag['class']==['a']
+	def __stat_tab(self,tag):
+		'''
+		ignore tables which is no the submission table
+		'''
+		return tag.has_attr('class') and tag['class']==['a']
 
-def __result_print(ret):
+	def print_result(self,ret):
 		print 'Run ID: ',ret['Run ID']
 		print 'Result: ',ret['Result']
 		print 'Memory: ',ret['Memory']
 		print 'Time: ',ret['Time']
 		print 'Code Length: ',ret['Code Length']
+
+def o_fxxk_poj(user_id,password,isfile,code,prob_id,lang=4):
+
+	fxxk=fxxk_poj_(user_id)
+
+	flag=fxxk.login_poj(password)
+	if flag:
+		if isfile:
+			flag=fxxk.submit_from_file(code,prob_id,lang)
+		else:
+			fxxk.submit_poj(code,prob_id,lang)
+		ret=fxxk.get_status()
+		fxxk.print_result(ret)			
+	else:
+		print '=Something Wrong. Program End.='
