@@ -21,7 +21,7 @@ There are several ways:
    - password
    - True/False (Will you submit code from a local file)
    - filepath (if last parameter is "True")/ code (Otherwise)
-   - prob_id (you can file)
+   - prob_id (you can find it in the url)
    - language (which can be found later in this instruction)
 2. If you want to use it more freely, you can use the class `fxxk_xxxx_`
    following functions are offerered:
@@ -182,4 +182,4 @@ I will be sincerely appreciate if you could help me improve my skill.
 
 This file may be updated at any time. Have fun! :D
 
-Lastest update: 2018.3.28
+Lastest update: 2018.3.29
