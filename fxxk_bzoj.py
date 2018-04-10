@@ -1,6 +1,19 @@
 import re,requests
 from bs4 import BeautifulSoup
 
+def get_headers(data):
+
+	header_dict={}
+
+	headers=data.split('\n')
+	for da in headers:
+		da=da.split(':')
+		if len(da[0]) and len(da[1]):
+			da[1]=da[1][1:]
+			header_dict[da[0]]=da[1]
+
+	return header_dict
+
 class fxxk_bzoj_():
 
 	mainurl='https://www.lydsy.com/JudgeOnline'
@@ -25,8 +38,7 @@ class fxxk_bzoj_():
 			'submit':'Submit'
 		}
 
-		session=requests.session()
-		r=session.post(fxxk_bzoj_.mainurl+'/login.php',data=logindata, headers=self.headers)
+		r=self.session.post(fxxk_bzoj_.mainurl+'/login.php',data=logindata, headers=self.headers)
 		x=int(re.search('(\d+)',r.text).group(0))
 		flag=x==2
 		if flag:
@@ -104,8 +116,8 @@ class fxxk_bzoj_():
 	def print_result(self,ret):
 		print 'RunID: ',ret['RunID']
 		print 'Result: ',ret['Result']
-		print 'Memory: ',ret['Memory']
-		print 'Time: ',ret['Time']
+		print 'Memory: ',ret['Memory'],'KB'
+		print 'Time: ',ret['Time'],'MS'
 		print 'Code_Length: ',ret['Code_Length']
 
 
