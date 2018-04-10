@@ -64,7 +64,6 @@ class fxxk_bzoj_():
 			'source':code
 		}
 		r=self.session.post(fxxk_bzoj_.mainurl+'/submit.php',data=submitdata, headers=self.headers)
-		print r.status_code
 
 		if r.status_code==200:
 			print 'Submitted!'
