@@ -15,7 +15,7 @@ So just `import fxxk_xxxx_ `, 'xxxx' is the name of oj.
 There are several ways:
 
 1. The easiest way is to use the function `o_fxxk_xxxx`
-   You just need to give the following parameters and waiting for result.
+   You just need to give the following parameters and to wait for result.
    - user_id
    - headers (for bzoj only)
    - password
@@ -40,6 +40,7 @@ There are several ways:
 - [hdu](http://acm.hdu.edu.cn/)
 - [spoj](http://www.spoj.com/)
 - [bzoj](https://www.lydsy.com)
+- [vijos](https://vijos.org/)
 
 ## Language ID for each OJ
 
@@ -171,10 +172,32 @@ The return value is a dict which can be directly used as the parameter.
 C:0
 C++:1 (default)
 Pascal:2
-Java:3
+Java:3k
 Ruby:4
 Bash:5
 Python:6
+
+Upd 2: add a 0.3s sleep.(Sounds useless, isn't it?) Add a rule which gives 'submission failed' sign if the post request's status code is not 200.
+
+***
+
+## vijos
+k
+Language in post data is a string, but you can also give a parameter as a number. You can choose either this time.
+
+C:0 'c'
+C++:1 (default) 'cc'
+C#:2 'cs'
+Pascal:3 'pas'
+Java:4 'java'
+Python:5 'py'
+Python3:6 'py3'
+PHP:7 'php'
+Rust:8 'rs'
+Haskell:9 'hs'
+Javascript:10 'js'
+Go:11 'go'
+Ruby:12 'rb'
 
 ***
 ## Others
@@ -184,5 +207,9 @@ If you have any problem or advice, write an issue.
 I will be sincerely appreciate if you could help me improve my skill.
 
 This file may be updated at any time. Have fun! :D
+
+**Recent Problems**:
+
+- Submit a problem which is not exist is vaild now, while you may never get the result(you'll get an exception soon in spoj and a 'submission failed' sign in the lastest one(fxxk_vijos), but I may be too lazy to fix what I have coded before.
 
 Lastest update: 2018.4.10
