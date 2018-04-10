@@ -165,6 +165,9 @@ Whitespace (wspace 0.3):6
 
 The easiest way is to copy it from your browser and make it as a dict in python.
 
+Upd: You can just make headers as a string, and use the 'get_headers' function in fxxk_bzoj.py instead.
+The return value is a dict which can be directly used as the parameter.
+
 C:0
 C++:1 (default)
 Pascal:2
@@ -182,4 +185,4 @@ I will be sincerely appreciate if you could help me improve my skill.
 
 This file may be updated at any time. Have fun! :D
 
-Lastest update: 2018.3.29
+Lastest update: 2018.4.10
