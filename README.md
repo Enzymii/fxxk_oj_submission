@@ -172,7 +172,7 @@ The return value is a dict which can be directly used as the parameter.
 C:0
 C++:1 (default)
 Pascal:2
-Java:3k
+Java:3
 Ruby:4
 Bash:5
 Python:6
@@ -182,7 +182,7 @@ Upd 2: add a 0.3s sleep.(Sounds useless, isn't it?) Add a rule which gives 'subm
 ***
 
 ## vijos
-k
+
 Language in post data is a string, but you can also give a parameter as a number. You can choose either this time.
 
 C:0 'c'
