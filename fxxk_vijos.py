@@ -71,8 +71,6 @@ class fxxk_vijos_():
 			print 'Submission Failed!'
 			return False
 
-		self.url=r.url
-
 	def get_status(self):
 
 		while 1:
