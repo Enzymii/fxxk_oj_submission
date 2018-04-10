@@ -1,4 +1,4 @@
-import re,requests
+import re,requests,time
 from bs4 import BeautifulSoup
 
 def get_headers(data):
@@ -64,8 +64,15 @@ class fxxk_bzoj_():
 			'source':code
 		}
 		r=self.session.post(fxxk_bzoj_.mainurl+'/submit.php',data=submitdata, headers=self.headers)
-		print 'Submitted!'
-		self.url=r.url
+		print r.status_code
+
+		if r.status_code==200:
+			print 'Submitted!'
+			self.url=r.url
+			return True
+		else:
+			print 'Submission Failed!'
+			return False
 		
 	def get_status(self):
 
@@ -100,6 +107,9 @@ class fxxk_bzoj_():
 						result['Code_Length']=td.find_all('td')[7].contents[0]
 			if found:
 				break
+
+			time.sleep(0.3)
+
 		return result			
 
 	def submit_from_file(self,filename,prob_id,lang=1):
