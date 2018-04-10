@@ -9,7 +9,7 @@ def get_headers(data):
 	for da in headers:
 		da=da.split(':')
 		if len(da[0]) and len(da[1]):
-			da[1]=da[1][1:]
+			da[1]=re.sub('^\s+','',da[1])
 			header_dict[da[0]]=da[1]
 
 	return header_dict
